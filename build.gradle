@@ -1,0 +1,21 @@
+apply plugin:'groovy'
+apply plugin:'eclipse'
+
+repositories {
+    mavenCentral()
+}
+
+compileGroovy {
+  groovyOptions.fork(memoryMaximumSize: '128M')
+}
+
+def spockVersion = '0.5-groovy-1.7'
+
+dependencies {
+    groovy 'org.codehaus.groovy:groovy-all:1.7.+'
+    testCompile "org.spockframework:spock-core:$spockVersion"
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '1.0-milestone-3'
+}
